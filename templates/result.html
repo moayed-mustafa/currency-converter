@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row ">
 
-    <div class="col-6 container">
+    <div class="col-6 container  ">
         <div class="card text-center">
             <div class="card-body">
                 <h5 class="card-title">Result</h5>
@@ -10,13 +10,14 @@
                         {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages%}
                                 {% for cat,msg in  messages%}
-                                <div class= {{cat}}>
+                                <div class= "alert-{{cat}}">
                                     <h3> {{msg}}</h3>
                                 </div>
                                 {% endfor %}
                             {% endif %}
                         {% endwith %}
                     </div>
+                    <a href="/" class="btn btn-{{cat}} mt-3">Home</a>
             </div>
         </div>
     </div>

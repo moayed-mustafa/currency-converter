@@ -1,9 +1,8 @@
-from forex_python.converter import CurrencyRates
+from forex_python.converter import CurrencyRates, CurrencyCodes
 from forex_python.bitcoin import BtcConverter
 c = CurrencyRates()
 b = BtcConverter()
-
-
+code = CurrencyCodes()
 
 def get_currency_rates():
     """ retrievs and returns the rates of the day"""
@@ -31,18 +30,19 @@ def validate_input(data):
         message = f"Not Valid code: {con_to.upper()}."
         return {"condition":False, "message":message}
     if amt < 0 :
-        return "Not valid amount."
+        message = "Not valid amount."
+        return {"condition":False, "message":message}
     else:
         amount = c.convert(con_from.upper(), con_to.upper(), amt)
-        message = f" The amount you get is:{round(amount,2)}."
-        return {"condition":True, "message":message}
+        message = f" The amount you get is:{get_currency_code(con_to.upper())}{round(amount,3)}."
+        return {"condition": True, "message": message}
 
 
-def convert_to_bitcoin(cur):
+def convert_to_bitcoin(amt, cur):
     """ converts to bitcoin """
     if cur.upper() in get_currency_rates():
-        price = b.get_latest_price(cur.upper())
-        message = f" you get: {round(price, 3)} "
+        price = b.convert_to_btc(float(amt), cur.upper())
+        message = f" for {get_currency_code(cur.upper())}{amt} you get:{round(price, 3)} Bitcoins "
         data = {"message": message, "condition": True}
         return data
     else:
@@ -50,6 +50,10 @@ def convert_to_bitcoin(cur):
         return {"message": message, "condition": False }
 
 
+def get_currency_code(cur_to):
+
+    symbol = code.get_symbol(cur_to)
+    return symbol
 
 
 

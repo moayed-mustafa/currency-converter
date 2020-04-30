@@ -3,15 +3,20 @@
 <div class="row d-flex  justify-content-center">
     <div class="col-6">
         <div class="card text-center" >
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1542355187331-3a0f1049318e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1494&q=80" alt="Card image cap">
+
             <div class="card-body">
                 <h5 class="card-title">Convert Currencies to Bitcoin</h5>
                 <form action="/bitcoin" class= "form-group">
-                    <div class= "d-flex mb-3 justify-content-center">
-                        <label for="currency">Currency: </label>
-                        <input type="text" class="form-control w-75 ml-2" id="Cur1" name = "currency" >
+                    <div class= "d-flex-inline mb-3 ">
+                            <label for="currency">Currency: </label>
+                            <input type="text" class="form-control  ml-2" id="Cur1" name = "currency" placeholder="Enter Currency" >
+                            <br>
+                            <label for="amount"> Amount: </label>
+                            <input type="number" class="form-control  ml-2" id="amount" name = "amount" placeholder="Enter Amount" >
                     </div>
 
-                        <button href="#" class="btn btn-primary">Exchange</button>
+                     <button href="#" class="btn btn-primary">Exchange</button>
 
                 </form>
             </div>

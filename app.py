@@ -19,15 +19,15 @@ def home_display():
     currency_dict = get_currency_rates()
     return render_template("home.html", rates=currency_dict)
 
+# ****************************************************************************************************
 @app.route("/display-currency-exchange")
 def display_exchange_currency():
     return render_template("currency.html")
-
+# ****************************************************************************************************
 @app.route("/display-bitcoin")
 def display_bitcoin():
     return render_template("bitcoin.html")
-
-
+# ****************************************************************************************************
 @app.route("/currency-exchange", methods=["GET","POST"])
 def exchange_currency():
     """ Makes the actual convertion from one currency to another """
@@ -39,32 +39,29 @@ def exchange_currency():
     print(data, result)
     session['result'] = result
     return redirect("/show-result")
-
-
-
+# ****************************************************************************************************
 @app.route("/show-result")
 def show_result():
     """ Responsible for showing results of convertion """
     result = session['result']
     if result["condition"]:
-        flash(result["message"], "alert-success")
+        flash(result["message"], "success")
         return render_template("result.html")
-    # return redirect("/currency-exchange")
 
     if not result["condition"]:
-        flash(result["message"] , "alert-danger")
+        flash(result["message"] , "danger")
         return render_template("result.html")
-    # return redirect("/currency-exchange", "bg-danger")
-
-
+# ****************************************************************************************************
 @app.route("/bitcoin")
 def bitcoin_exchange():
     """Converts currencies into bitcoin """
     cur = request.args.get("currency")
-    result = convert_to_bitcoin(cur)
+    amt = request.args.get("amount")
+    result = convert_to_bitcoin(amt, cur)
     if result["condition"]:
-        flash(result["message"], "alert-success")
+        flash(result["message"], "success")
         return redirect("/show-result")
     else:
-        flash(result["message"], "alert-danger")
+        flash(result["message"], "danger")
         return redirect("/show-result")
+# ****************************************************************************************************
