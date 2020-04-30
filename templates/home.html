@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <!-- Rate List Table Col -->
+    <div class="col">
+        <!-- fill with the rates of the day. -->
+        <table class="table table-dark table-sm">
+            <thead>
+                <tr>
+                <th scope="col">Currency</th>
+                <th scope="col">Rate Against USD</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for (cur, rate) in rates.items()%}
+                <tr>
+                    <td>{{cur}} </td>
+                    <td>{{rate}} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+    </div>
+<!-- Card that takes to Money Exchagnge Page Col -->
+    <div class="col">
+        <div class="card text-center" >
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="card-img-top" alt="Money">
+            <div class="card-body">
+                <h5 class="card-title">Exchange Currencies</h5>
+                <p class="card-text">Change from your home currency to the currency you desire.</p>
+                <a href="/display-currency-exchange" class="btn btn-primary">Exchange</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- Card that takes to Bitcoin Exchagnge Page -->
+    <div class="col">
+        <div class="card text-center" >
+            <img src="https://images.unsplash.com/photo-1516245834210-c4c142787335?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80" class="card-img-top" alt="Virtual-Money">
+            <div class="card-body">
+                <h5 class="card-title">Exchange Virtual Currencies</h5>
+                <p class="card-text">Change from your home currency to BItcoin.</p>
+                <a href="/display-bitcoin" class="btn btn-primary">Exchange</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

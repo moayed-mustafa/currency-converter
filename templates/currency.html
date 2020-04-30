@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row d-flex  justify-content-center">
+    <div class="col-6">
+        <div class="card text-center" >
+            <div class="card-body">
+                <h5 class="card-title">Convert Between Currencies</h5>
+                <form action="/currency-exchange" method = "post" class= "form-group">
+                    <div class= "d-flex mb-3 justify-content-center">
+                        <label for="Cur1">Converting From: </label>
+                        <input type="text" class="form-control w-25 ml-2" id="Cur1" name = "Cur1" >
+                    </div>
+                    <div class= "d-flex mb-3 justify-content-center">
+                        <label for="Cur1 ">Converting to: </label>
+                        <input type="text" class="form-control w-25 ml-2" id="Cur2" name = "Cur2" >
+                    </div>
+                    <div class= "d-flex mb-3 justify-content-center">
+                        <label for="amount">Amount: </label>
+                        <input type="number" class="form-control w-25 ml-4" id="amount" name = "amount" >
+                    </div>
+                        <button  class="btn btn-primary">Exchange</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
