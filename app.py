@@ -1,6 +1,6 @@
 from flask import Flask, flash, jsonify, render_template, redirect, request, session
 from flask_debugtoolbar import DebugToolbarExtension
-from logic import get_currency_rates, validate_input, convert_to_bitcoin
+from logic import get_currency_rates, validate_input, convert_to_bitcoin, convert_curruncies
 
 
 app = Flask(__name__)
@@ -33,10 +33,9 @@ def exchange_currency():
     """ Makes the actual convertion from one currency to another """
     currency_from = request.form.get('Cur1')
     currency_to = request.form.get('Cur2')
-    amnt = request.form.get('amount')
-    data = {"from": currency_from, "to": currency_to, "amount": amnt}
-    result = validate_input(data)
-    print(data, result)
+    amt = request.form.get('amount')
+    data = {"from": currency_from, "to": currency_to, "amount": amt}
+    result = convert_curruncies(data)
     session['result'] = result
     return redirect("/show-result")
 # ****************************************************************************************************
@@ -57,11 +56,8 @@ def bitcoin_exchange():
     """Converts currencies into bitcoin """
     cur = request.args.get("currency")
     amt = request.args.get("amount")
-    result = convert_to_bitcoin(amt, cur)
-    if result["condition"]:
-        flash(result["message"], "success")
-        return redirect("/show-result")
-    else:
-        flash(result["message"], "danger")
-        return redirect("/show-result")
+    # result = validate_input({"amt":amt, "cur":cur})
+    result = convert_to_bitcoin({"amount":amt, "cur":cur})
+    session["result"] = result
+    return redirect("/show-result")
 # ****************************************************************************************************

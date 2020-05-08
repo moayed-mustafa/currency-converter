@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% block title %} <title>Bitcoin|Exchange Agency </title> {% endblock %}
+
 {% block content %}
 <div class="row d-flex  justify-content-center">
     <div class="col-6">
@@ -10,15 +12,19 @@
                 <form action="/bitcoin" class= "form-group">
                     <div class= "d-flex-inline mb-3 ">
                             <label for="currency">Currency: </label>
-                            <input type="text" class="form-control  ml-2" id="Cur1" name = "currency" placeholder="Enter Currency" >
+                            <input type="text" class="form-control  ml-2" id="Cur1" name = "currency" placeholder="Enter currency code" required >
                             <br>
                             <label for="amount"> Amount: </label>
-                            <input type="number" class="form-control  ml-2" id="amount" name = "amount" placeholder="Enter Amount" >
+                            <input type="number" class="form-control  ml-2" id="amount" name = "amount" placeholder="Enter amount"required  >
                     </div>
 
                      <button href="#" class="btn btn-primary">Exchange</button>
+                    </form>
 
-                </form>
+                    <form action="/">
+                        <button href="/" class="btn btn-warning " >Home</button>
+                    </form>
+
             </div>
         </div>
     </div>

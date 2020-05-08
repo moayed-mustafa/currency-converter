@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% block title %} <title>Results|Exchange Agency </title> {% endblock %}
+
 {% block content %}
 <div class="row ">
 
@@ -13,11 +15,11 @@
                                 <div class= "alert-{{cat}}">
                                     <h3> {{msg}}</h3>
                                 </div>
+                                <a href="#" class="btn btn-{{cat}} mt-3" onClick= "history.go(-1)">Back</a>
                                 {% endfor %}
                             {% endif %}
                         {% endwith %}
                     </div>
-                    <a href="/" class="btn btn-{{cat}} mt-3">Home</a>
             </div>
         </div>
     </div>

@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% block title %} <title>Currency|Exchange Agency </title> {% endblock %}
+
 {% block content %}
 <div class="row d-flex  justify-content-center">
     <div class="col-6">
@@ -8,16 +10,20 @@
                 <h5 class="card-title">Convert Between Currencies</h5>
                 <form action="/currency-exchange" method = "post" class= "form-group">
                         <label for="Cur1">Converting From: </label>
-                        <input type="text" class="form-control m-2" id="Cur1" name = "Cur1" >
+                        <input type="text" class="form-control m-2" id="Cur1" name = "Cur1" placeholder="Enter currency code" required  >
 
                         <label for="Cur1 ">Converting to: </label>
-                        <input type="text" class="form-control  m-2" id="Cur2" name = "Cur2" >
+                        <input type="text" class="form-control  m-2" id="Cur2" name = "Cur2"placeholder="Enter currency code" required  >
 
                         <label for="amount">Amount: </label>
-                        <input type="number" class="form-control m-2" id="amount" name = "amount" >
+                        <input type="number" class="form-control m-2" id="amount" name = "amount"placeholder="Enter amount" required  >
 
                         <button  class="btn btn-primary">Exchange</button>
-                </form>
+
+                    </form>
+                    <form action="/">
+                        <button href="/" class="btn btn-warning " >Home</button>
+                    </form>
             </div>
         </div>
     </div>
